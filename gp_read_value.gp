@@ -16,11 +16,11 @@
 set terminal unknown
 
 if ($# == 3) \
-   gp_read_values_column = $1; \
-   gp_read_values_row = $2; \
-   plot "$0" index 0 every 1:1:gp_read_values_row:0:gp_read_values_row:0 using (gp_read_values_result = column(gp_read_values_column)):1
+   gprv_column = $1; \
+   gprv_row = $2; \
+   plot "$0" index 0 every 1:1:gprv_row:0:gprv_row:0 using (gprv_result = column(gprv_column)):1
 if ($# == 4) \
-   gp_read_values_column_search = $1; \
-   gp_read_values_column_value = $2; \
-   gp_read_values_key = $3; \
-   plot "$0" index 0 using (column(gp_read_values_column_search) == gp_read_values_key ? gp_read_values_result = column(gp_read_values_column_value):1/0):1
+   gprv_column_search = $1; \
+   gprv_column_value = $2; \
+   gprv_key = $3; \
+   plot "$0" index 0 using (column(gprv_column_search) == gprv_key ? gprv_result = column(gprv_column_value):1/0):1
