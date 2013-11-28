@@ -11,14 +11,13 @@ set terminal epslatex standalone color colortext size 14.7cm,9cm
 set output "example_2_1.tex"
 
 # Call the script from its location
-# Argument 1: Path to the script (needed for internal reasons)
-# Argument 2: Number of plots in x-direction
-# Argument 3: Number of plots in y-direction
-# Argument 4: Percentage of the left margin
-# Argument 5: Percentage of the right margin
-# Argument 6: Percentage of the bottom margin
-# Argument 7: Percentage of the top margin
-call "../gpfs_sizes_gen.gp" "../" 2 1 0.1 0.1 0.15 0
+# Argument 1: Number of plots in x-direction
+# Argument 2: Number of plots in y-direction
+# Argument 3: Percentage of the left margin
+# Argument 4: Percentage of the right margin
+# Argument 5: Percentage of the bottom margin
+# Argument 6: Percentage of the top margin
+call "../gpfs_sizes_gen.gp" 2 1 0.1 0.1 0.15 0
 
 set multiplot
 
