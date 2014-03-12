@@ -77,6 +77,19 @@ gpfs_origin_x(index) = gpfs_calc_origin(gpfs_margin_horizontal_left, gpfs_margin
 # Function to calculate the y-origin of a plot in terms of the y-index of the plot
 gpfs_origin_y(index) = gpfs_calc_origin(gpfs_margin_vertical_bottom, gpfs_margin_vertical_top, gpfs_total_number_y, index)
 
+# Functions to calculate the centers of the x1-labels
+gpfs_label_x1_x(index) = gpfs_margin_horizontal_left + (index + 0.5)*gpfs_size_x
+gpfs_label_x1_y(index) = 0.5*gpfs_margin_vertical_bottom
+# Functions to calculate the centers of the x2-labels
+gpfs_label_x2_x(index) = gpfs_label_x1_x(index)
+gpfs_label_x2_y(index) = 1 - 0.5*gpfs_margin_vertical_top
+# Functions to calculate the centers of the y1-labels
+gpfs_label_y1_x(index) = 0.5*gpfs_margin_horizontal_left
+gpfs_label_y1_y(index) = gpfs_margin_vertical_bottom + (index + 0.5)*gpfs_size_y
+# Functions to calculate the centers of the y2-labels
+gpfs_label_y2_x(index) = 1 - 0.5*gpfs_margin_horizontal_right
+gpfs_label_y2_y(index) = gpfs_label_y1_y(index)
+
 # Auxiliary functions for converting graph to screen coordinates and vice versa
 gpfs_graph_to_screen_coordinate(index, coordinate, size, margin) = margin + (index + coordinate)*size
 gpfs_graph_to_screen_x_coordinate(index, coordinate) = gpfs_graph_to_screen_coordinate(index, coordinate, gpfs_size_x, gpfs_margin_horizontal_left)
