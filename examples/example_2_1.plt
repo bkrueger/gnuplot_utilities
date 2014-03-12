@@ -51,7 +51,7 @@ set yrange [-1.1:1.1]
 
 # Use the functions to manualle set the x- and the y-labels
 set label '\textbf{very very very long argument} $x$' at screen gpfs_label_x1_x(0.5), gpfs_label_x1_y(0) center
-set label '\textbf{result} $\sin(x)$' at screen gpfs_label_y1_x(0), gpfs_label_y1_y(0) center rotate by 90
+set label '\textbf{result} $\sin(x)$' at screen gpfs_label_y1_x(0) - 0.025, gpfs_label_y1_y(0) center rotate by 90
 
 plot sin(x) title '$f(x) = \sin(x)$'
 
@@ -76,7 +76,7 @@ set y2range [-1.1:1.1]
 set format y ''
 set y2tics -1.5,0.5,1.5
 
-set label '\textbf{result} $\sin(x)$' at screen gpfs_label_y2_x(1), gpfs_label_y2_y(0) center rotate by 270
+set label '\textbf{result} $\sin(x)$' at screen gpfs_label_y2_x(1) + 0.025, gpfs_label_y2_y(0) center rotate by 270
 
 plot cos(x) title '$f(x) = \cos(x)$'
 
