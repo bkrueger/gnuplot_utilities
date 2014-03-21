@@ -15,7 +15,7 @@
 ################################
 
 # Reads the margins from the command line
-if ($# == 6) \
+if (exists("$5") && !exists("$6")) \
    gpfs_total_number_x = $0; \
    gpfs_total_number_y = $1; \
    gpfs_screen_size_x = 1.0; \
@@ -24,7 +24,7 @@ if ($# == 6) \
    gpfs_margin_horizontal_right = $3; \
    gpfs_margin_vertical_bottom = $4; \
    gpfs_margin_vertical_top = $5
-if ($# == 8) \
+if (exists("$7") && !exists("$8")) \
    gpfs_total_number_x = $2; \
    gpfs_total_number_y = $3; \
    gpfs_screen_size_x = $0; \
