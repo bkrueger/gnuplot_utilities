@@ -26,6 +26,8 @@ plot_size = sprintf("%g",plot_width)."cm,".sprintf("%g",plot_height)."cm"
 # Call the script setting fixed sizes with units
 call "../gp_fixed_sizes.gp" plot_width plot_height 2 1 margin_left margin_right margin_bottom margin_top
 
+# Load the script for the subplot labels
+load "../gp_subplot_labels.gp"
 
 # Set the terminal with an explicit size matching your requirements
 set terminal epslatex standalone color colortext size @plot_size
@@ -52,6 +54,9 @@ set yrange [-1.1:1.1]
 # Use the functions to manualle set the x- and the y-labels
 set label '\textbf{very very very long argument} $x$' at screen gpfs_label_x1_x(0.5), gpfs_label_x1_y(0) center
 set label '\textbf{result} $\sin(x)$' at screen gpfs_label_y1_x(0) - 0.025, gpfs_label_y1_y(0) center rotate by 90
+
+# Set the subplot label
+sp_label = gpsl_bottom_left('$\textbf{a}$', 0.5, 0); eval sp_label
 
 plot sin(x) title '$f(x) = \sin(x)$'
 
