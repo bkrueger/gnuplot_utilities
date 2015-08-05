@@ -1,7 +1,8 @@
-TEXE = $(wildcard *.tex)
-DVIS = $(patsubst %.tex,%.dvi,$(TEXE))
-PS   = $(patsubst %.tex,%.ps,$(TEXE))
-PDFS = $(patsubst %.tex,%.pdf,$(TEXE))
+PLTS = $(wildcard *.plt)
+TEXE = $(patsubst %.plt,%.tex,$(PLTS))
+DVIS = $(patsubst %.plt,%.dvi,$(PLTS))
+PS   = $(patsubst %.plt,%.ps,$(PLTS))
+PDFS = $(patsubst %.plt,%.pdf,$(PLTS))
 
 all: $(PDFS)
 
@@ -13,3 +14,6 @@ all: $(PDFS)
 
 %.dvi : %.tex
 	latex $<
+
+%.tex : %.plt
+	gnuplot $<

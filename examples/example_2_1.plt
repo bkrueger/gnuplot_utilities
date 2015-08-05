@@ -1,7 +1,3 @@
-# Call with:
-# gnuplot example_2_1.plt
-# make
-
 ###########################################
 # General settings                        #
 # Can be put in a config file to generate #
@@ -48,17 +44,17 @@ set size gpfs_size_x,gpfs_size_y
 # Plot is the first in x-direction and the first in y-direction
 set origin gpfs_origin_x(0),gpfs_origin_y(0)
 
-set xrange [-pi:pi]
-set yrange [-1.1:1.1]
+set xrange [-1.1*pi:1.1*pi]
+set yrange [-1.1:1.2]
 
-# Use the functions to manualle set the x- and the y-labels
+# Use the functions to manually set the x- and the y-labels
 set label '\textbf{very very very long argument} $x$' at screen gpfs_label_x1_x(0.5), gpfs_label_x1_y(0) center
 set label '\textbf{result} $\sin(x)$' at screen gpfs_label_y1_x(0) - 0.025, gpfs_label_y1_y(0) center rotate by 90
 
 # Set the subplot label
 sp_label = gpsl_bottom_left('$\textbf{a}$', 0.5, 0); eval sp_label
 
-plot sin(x) title '$f(x) = \sin(x)$'
+plot sin(x) title '$f(x) = \sin(x)$' lw 4
 
 
 ##########
@@ -74,14 +70,16 @@ set size gpfs_size_x,gpfs_size_y
 # Plot is the second in x-direction and the first in y-direction
 set origin gpfs_origin_x(1),gpfs_origin_y(0)
 
-set xrange [-pi:pi]
-set yrange [-1.1:1.1]
-set y2range [-1.1:1.1]
+set xrange [-1.1*pi:1.1*pi]
+set yrange [-1.1:1.2]
+set y2range [-1.1:1.2]
 
 set format y ''
 set y2tics -1.5,0.5,1.5
 
-set label '\textbf{result} $\sin(x)$' at screen gpfs_label_y2_x(1) + 0.025, gpfs_label_y2_y(0) center rotate by 270
+set label '\textbf{result} $\cos(x)$' at screen gpfs_label_y2_x(1) + 0.025, gpfs_label_y2_y(0) center rotate by 270
 
-plot cos(x) title '$f(x) = \cos(x)$'
+sp_label = gpsl_bottom_left('$\textbf{b}$', 0.5, 0); eval sp_label
+
+plot cos(x) title '$f(x) = \cos(x)$' lw 4
 
