@@ -124,14 +124,14 @@ gpfs_graph_to_screen_coordinate_y(c, i) = gpfs_margin_vertical_bottom + (i + l)*
 #############################################
 
 # Functions to calculate the centers of the x1-labels
-gpfs_label_x1_x(index) = gpfs_margin_horizontal_left + (index + 0.5)*gpfs_size_x
+gpfs_label_x1_x(index) = gpfs_origin_x(index + 0.5)
 gpfs_label_x1_y(index) = 0.5*gpfs_margin_vertical_bottom
 # Functions to calculate the centers of the x2-labels
 gpfs_label_x2_x(index) = gpfs_label_x1_x(index)
 gpfs_label_x2_y(index) = 1 - 0.5*gpfs_margin_vertical_top
 # Functions to calculate the centers of the y1-labels
 gpfs_label_y1_x(index) = 0.5*gpfs_margin_horizontal_left
-gpfs_label_y1_y(index) = gpfs_margin_vertical_bottom + (index + 0.5)*gpfs_size_y
+gpfs_label_y1_y(index) = gpfs_origin_y(index + 0.5)
 # Functions to calculate the centers of the y2-labels
 gpfs_label_y2_x(index) = 1 - 0.5*gpfs_margin_horizontal_right
 gpfs_label_y2_y(index) = gpfs_label_y1_y(index)

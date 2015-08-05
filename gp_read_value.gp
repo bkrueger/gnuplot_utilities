@@ -1,5 +1,5 @@
 # File to read a single value from a file into a variable
-# The value will be stored in the variable "gp_read_values_result"
+# The value will be stored in the variable "gprv_result"
 #
 # This script can be called with the following arguments
 # call "read_value.gp" datafile column row
@@ -13,14 +13,14 @@
 # column_value:  Index of the column where the valued to be read is located
 # key:           Key associated to the value that should be searched
 
-set terminal unknown
-
 if ($# == 3) \
    gprv_column = $1; \
    gprv_row = $2; \
-   plot "$0" index 0 every 1:1:gprv_row:0:gprv_row:0 using (gprv_result = column(gprv_column)):1
+   load "<grep -v -e \"^#\" -e \"^ *$$\" $0 | head -n ".sprintf("%i", gprv_row)." | tail -n 1 | awk '{ printf \"gprv_result = \"$$".sprintf("%i", gprv_column)." }'"
+
 if ($# == 4) \
    gprv_column_search = $1; \
    gprv_column_value = $2; \
    gprv_key = $3; \
-   plot "$0" index 0 using (column(gprv_column_search) == gprv_key ? gprv_result = column(gprv_column_value):1/0):1
+   load "<awk '$$".sprintf("%i", gprv_column_search)." == ".sprintf("%f", gprv_key)." { printf \"gprv_result = \"$$".sprintf("%i", gprv_column_value)."\"\\n\" }' $0"
+
