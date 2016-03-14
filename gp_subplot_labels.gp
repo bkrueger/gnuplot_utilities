@@ -48,25 +48,33 @@ gpsl_label_screen_size(label, graph_pos_x, graph_pos_y, screen_size_x, screen_si
 # screen_margin_x: The x-distance from the plot boundaries in screen coordinates
 # screen_margin_y: The y-distance from the plot boundaries in screen coordinates
 
-# Function for setting a subplot label at the bottom left of the plot
-gpsl_bottom_left(label, unit_size, unit_margin) = \
-    gpsl_label_unit_size(label, gpfs_unit_to_graph_length_x(unit_margin + 0.5*unit_size), \
-                         gpfs_unit_to_graph_length_y(unit_margin + 0.5*unit_size), unit_size, unit_size)
+# Function for setting a subplot label at the bottom left of the plot, for plots of size factor_x * gpfs_size_x times factor_y * gpfs_size_y
+gpsl_bottom_left_factor(label, unit_size, unit_margin, factor_x, factor_y) = \
+    gpsl_label_unit_size(label, gpfs_unit_to_graph_length_x(unit_margin + 0.5*unit_size/factor_x), \
+                         gpfs_unit_to_graph_length_y(unit_margin + 0.5*unit_size/factor_y), unit_size, unit_size)
+# Function for setting a subplot label at the bottom left of the plot, for plots of size gpfs_size_x times gpfs_size_y
+gpsl_bottom_left(label, unit_size, unit_margin) = gpsl_bottom_left_factor(label, unit_size, unit_margin, 1.0, 1.0)
 
-# Function for setting a subplot label at the bottom right of the plot
-gpsl_bottom_right(label, unit_size, unit_margin) = \
-    gpsl_label_unit_size(label, 1 - gpfs_unit_to_graph_length_x(unit_margin + 0.5*unit_size), \
-                         gpfs_unit_to_graph_length_y(unit_margin + 0.5*unit_size), unit_size, unit_size)
+# Function for setting a subplot label at the bottom right of the plot, for plots of size factor_x * gpfs_size_x times factor_y * gpfs_size_y
+gpsl_bottom_right_factor(label, unit_size, unit_margin, factor_x, factor_y) = \
+    gpsl_label_unit_size(label, 1 - gpfs_unit_to_graph_length_x(unit_margin + 0.5*unit_size/factor_x), \
+                         gpfs_unit_to_graph_length_y(unit_margin + 0.5*unit_size/factor_y), unit_size, unit_size)
+# Function for setting a subplot label at the bottom right of the plot, for plots of size gpfs_size_x times gpfs_size_y
+gpsl_bottom_right(label, unit_size, unit_margin) = gpsl_bottom_right_factor(label, unit_size, unit_margin, 1.0, 1.0)
 
-# Function for setting a subplot label at the top left of the plot
-gpsl_top_left(label, unit_size, unit_margin) = \
-    gpsl_label_unit_size(label, gpfs_unit_to_graph_length_x(unit_margin + 0.5*unit_size), \
-                                1 - gpfs_unit_to_graph_length_y(unit_margin + 0.5*unit_size), unit_size, unit_size)
+# Function for setting a subplot label at the top left of the plot, for plots of size factor_x * gpfs_size_x times factor_y * gpfs_size_y
+gpsl_top_left_factor(label, unit_size, unit_margin, factor_x, factor_y) = \
+    gpsl_label_unit_size(label, gpfs_unit_to_graph_length_x(unit_margin + 0.5*unit_size/factor_x), \
+                                1 - gpfs_unit_to_graph_length_y(unit_margin + 0.5*unit_size/factor_y), unit_size, unit_size)
+# Function for setting a subplot label at the top left of the plot, for plots of size gpfs_size_x times gpfs_size_y
+gpsl_top_left(label, unit_size, unit_margin) = gpsl_top_left_factor(label, unit_size, unit_margin, 1.0, 1.0)
 
-# Function for setting a subplot label at the top right of the plot
-gpsl_top_right(label, unit_size, unit_margin) = \
-    gpsl_label_unit_size(label, 1 - gpfs_unit_to_graph_length_x(unit_margin + 0.5*unit_size), \
-                                1 - gpfs_unit_to_graph_length_y(unit_margin + 0.5*unit_size), unit_size, unit_size)
+# Function for setting a subplot label at the top right of the plot, for plots of size factor_x * gpfs_size_x times factor_y * gpfs_size_y
+gpsl_top_right_factor(label, unit_size, unit_margin, factor_x, factor_y) = \
+    gpsl_label_unit_size(label, 1 - gpfs_unit_to_graph_length_x(unit_margin + 0.5*unit_size/factor_x), \
+                                1 - gpfs_unit_to_graph_length_y(unit_margin + 0.5*unit_size/factor_y), unit_size, unit_size)
+# Function for setting a subplot label at the top right of the plot, for plots of size gpfs_size_x times gpfs_size_y
+gpsl_top_right(label, unit_size, unit_margin) = gpsl_top_right_factor(label, unit_size, unit_margin, 1.0, 1.0)
 
 # Function for setting a subplot label at the bottom left of the plot
 gpsl_bottom_left_screen(label, screen_size_x, screen_size_y, screen_margin_x, screen_margin_y) = \
